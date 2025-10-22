@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oktoberfest Munich - The World's Largest Volksfest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #000000;
+            --secondary: #DD0000;
+            --accent: #FFCC00;
+            --light: #F5F5F5;
+            --dark: #333333;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-accent: 'Georgia', serif;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-accent);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: var(--light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        nav a {
+            color: var(--light);
+            font-weight: 500;
+            padding: 5px 0;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1531816458010-fb7684830f81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light);
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(221, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Beer Tents Section */
+        .tent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .tent-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tent-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .tent-img {
+            height: 220px;
+            background-color: var(--dark);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .tent-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .tent-card:hover .tent-overlay {
+            opacity: 1;
+        }
+        
+        .tent-content {
+            padding: 1.8rem;
+        }
+        
+        .tent-content h3 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tent-content h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .tent-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .tent-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .tent-meta i {
+            margin-right: 5px;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* History Section */
+        .history-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1572016119792-7d8baf6de58a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .history-section h2 {
+            color: var(--accent);
+            border-color: var(--secondary);
+        }
+        
+        .history-section h2::after {
+            background-color: var(--accent);
+        }
+        
+        .history-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: var(--accent);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 45%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 1;
+            box-shadow: 0 0 0 8px rgba(255,255,255,0.1);
+        }
+        
+        /* Trip Planning Section */
+        .planning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Food & Drink Section */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .food-item {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .food-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .food-img {
+            height: 180px;
+            background-color: var(--dark);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .food-content {
+            padding: 1.8rem;
+        }
+        
+        /* Etiquette Section */
+        .etiquette-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .do-dont {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .do-dont:hover {
+            transform: translateY(-10px);
+        }
+        
+        .do-dont h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .do-dont h3::before {
+            content: "";
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin-right: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .do h3::before {
+            background-color: #4CAF50;
+            content: "\f00c";
+        }
+        
+        .dont h3::before {
+            background-color: #F44336;
+            content: "\f00d";
+        }
+        
+        .do-dont ul {
+            list-style-position: inside;
+        }
+        
+        .do-dont li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+        
+        /* Interactive Map */
+        .map-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .germany-map {
+            width: 100%;
+            height: 500px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Germany_%28centered_orthographic_projection%29.svg/1200px-Germany_%28centered_orthographic_projection%29.svg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .map-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 0 0 rgba(221, 0, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .map-point:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: var(--accent);
+        }
+        
+        .map-tooltip {
+            position: absolute;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 10;
+            white-space: nowrap;
+        }
+        
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        .gallery-item {
+            height: 220px;
+            background-color: var(--dark);
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            margin: 0 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .tourism-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tourism-link {
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        
+        .tourism-link:hover {
+            background-color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            color: var(--light);
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #999;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(221, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(221, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(221, 0, 0, 0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 6rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .history-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 80px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-year {
+                left: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 0 0.8rem 0.8rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .tent-grid, .food-grid, .etiquette-container, .planning-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-beer"></i>
+                Oktober<span>fest</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#tents"><i class="fas fa-archway"></i> Beer Tents</a></li>
+                    <li><a href="#history"><i class="fas fa-landmark"></i> History</a></li>
+                    <li><a href="#plan"><i class="fas fa-map-marked-alt"></i> Plan Your Trip</a></li>
+                    <li><a href="#food"><i class="fas fa-utensils"></i> Food & Drink</a></li>
+                    <li><a href="#etiquette"><i class="fas fa-book"></i> Etiquette</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Oktoberfest Munich</h1>
+            <p>The World's Largest Volksfest</p>
+            <p>Experience Bavarian culture at its finest with traditional music, authentic food, and of course, the finest beers in specially brewed Oktoberfest Märzen.</p>
+            <a href="#plan" class="btn">Plan Your Visit</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Oktoberfest</h2>
+                <p>Discover the world's most famous folk festival</p>
+            </div>
+            
+            <div class="section-intro">
+                <p>Oktoberfest is the world's largest Volksfest (beer festival and travelling funfair). Held annually in Munich, Bavaria, Germany, it is a 16- to 18-day folk festival running from mid- or late-September to the first weekend in October, with more than 6 million people from around the world attending the event every year.</p>
+            </div>
+            
+            <div class="festival-stats">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                    <div>
+                        <h3 style="color: var(--secondary); font-size: 2.5rem;">6M+</h3>
+                        <p>Visitors Annually</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--secondary); font-size: 2.5rem;">16-18</h3>
+                        <p>Festival Days</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--secondary); font-size: 2.5rem;">7.5M</h3>
+                        <p>Liters of Beer</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--secondary); font-size: 2.5rem;">1810</h3>
+                        <p>First Celebration</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center;">Location & Dates</h3>
+                <p style="text-align: center; font-size: 1.2rem;"><strong>Theresienwiese, Munich</strong> • Late September to First Sunday in October</p>
+                <p style="text-align: center;">The festival grounds, known as "Theresienwiese" or "Wiesn" for short, cover 420,000 square meters in central Munich. The 2023 festival runs from September 16th to October 3rd.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beer Tents Section -->
+    <section id="tents" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Famous Beer Tents</h2>
+                <p>Discover the iconic tents of Oktoberfest</p>
+            </div>
+            
+            <div class="tent-grid">
+                <!-- Schottenhamel Tent -->
+                <div class="tent-card">
+                    <div class="tent-img" style="background-image: url('https://images.unsplash.com/photo-1572119865084-043f79aba1d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="tent-overlay">
+                            <h3>Where Oktoberfest Begins</h3>
+                        </div>
+                    </div>
+                    <div class="tent-content">
+                        <h3><i class="fas fa-beer"></i> Schottenhamel</h3>
+                        <div class="tent-meta">
+                            <span><i class="fas fa-users"></i> Capacity: 10,000</span>
+                            <span><i class="fas fa-beer"></i> Spaten Brewery</span>
+                        </div>
+                        <p>The Schottenhamel tent is where the official tapping of the first keg takes place, marking the start of Oktoberfest. It's particularly popular with younger crowds and students, featuring lively music and a festive atmosphere.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Hofbräu Tent -->
+                <div class="tent-card">
+                    <div class="tent-img" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="tent-overlay">
+                            <h3>International Favorite</h3>
+                        </div>
+                    </div>
+                    <div class="tent-content">
+                        <h3><i class="fas fa-flag"></i> Hofbräu Festzelt</h3>
+                        <div class="tent-meta">
+                            <span><i class="fas fa-users"></i> Capacity: 6,900</span>
+                            <span><i class="fas fa-beer"></i> Hofbräu Brewery</span>
+                        </div>
+                        <p>Known as the most international tent, Hofbräu Festzelt is particularly popular with visitors from Australia, the US, and the UK. It features a lively "Ein Prosit" singalong and traditional Bavarian music mixed with international hits.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Augustiner Tent -->
+                <div class="tent-card">
+                    <div class="tent-img" style="background-image: url('https://images.unsplash.com/photo-1572119865084-043f79aba1d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="tent-overlay">
+                            <h3>Munich's Favorite</h3>
+                        </div>
+                    </div>
+                    <div class="tent-content">
+                        <h3><i class="fas fa-heart"></i> Augustiner-Festhalle</h3>
+                        <div class="tent-meta">
+                            <span><i class="fas fa-users"></i> Capacity: 6,000</span>
+                            <span><i class="fas fa-beer"></i> Augustiner Brewery</span>
+                        </div>
+                        <p>Considered by many locals to serve the best beer at Oktoberfest, the Augustiner tent maintains a more traditional, family-friendly atmosphere. It's known for serving beer from wooden barrels rather than stainless steel tanks.</p>
+                        <a href="#" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="history-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Oktoberfest History</h2>
+                <p>Over 200 years of Bavarian tradition</p>
+            </div>
+            
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>The First Oktoberfest</h3>
+                        <p>The first Oktoberfest was held in 1810 to celebrate the marriage of Crown Prince Ludwig (later King Ludwig I) to Princess Therese of Saxony-Hildburghausen. The citizens of Munich were invited to attend the festivities held on the fields in front of the city gates, named Theresienwiese ("Theresa's fields") in honor of the bride.</p>
+                    </div>
+                    <div class="timeline-year">1810</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Agricultural Fair Addition</h3>
+                        <p>In 1811, an agricultural show was added to promote Bavarian agriculture. This tradition continues today with the Central Agricultural Festival taking place every three years during Oktoberfest, featuring livestock competitions and farming exhibitions.</p>
+                    </div>
+                    <div class="timeline-year">1811</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Beer Tents Introduced</h3>
+                        <p>Small beer stands were introduced in 1818, which gradually grew into the massive beer halls we know today. The first carousel and swings were also set up, marking the beginning of the amusement park aspect of the festival.</p>
+                    </div>
+                    <div class="timeline-year">1818</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Modern Oktoberfest Born</h3>
+                        <p>In the late 19th century, Oktoberfest transformed into the modern festival we recognize today. Electric lighting illuminated the festival in 1880, and the first beer was served in glass mugs in 1892. The statue of Bavaria was completed in 1850, becoming an iconic symbol of the festival.</p>
+                    </div>
+                    <div class="timeline-year">1880</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trip Planning Section -->
+    <section id="plan">
+        <div class="container">
+            <div class="section-title">
+                <h2>Plan Your Trip</h2>
+                <p>Essential information for your Oktoberfest visit</p>
+            </div>
+            
+            <div class="planning-grid">
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Getting There</h3>
+                    <p>Munich Airport (MUC) is well-connected internationally. From the airport, take the S-Bahn (S1 or S8) to the city center. The festival grounds are easily accessible by public transportation (U-Bahn U4/U5 to Theresienwiese).</p>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Accommodation</h3>
+                    <p>Book hotels months in advance as they fill up quickly. Consider staying in neighborhoods slightly outside the city center for better availability and prices. Alternative options include Airbnb, hostels, or nearby towns with train access.</p>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Tickets & Reservations</h3>
+                    <p>Entry to Oktoberfest is free, but reservations for beer tents are essential, especially for weekends and evenings. Reservations open in spring through individual tent websites. Some tables may be available for walk-ins on weekdays.</p>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Budget Planning</h3>
+                    <p>Budget approximately €12-€15 per liter of beer, €15-€25 for main dishes, and €5-€10 for snacks. Bring cash as many vendors don't accept cards. Consider purchasing a mass (liter) mug as a souvenir (€10-€20 deposit).</p>
+                </div>
+            </div>
+            
+            <!-- Interactive Map -->
+            <div class="map-container">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Oktoberfest Location & Transportation</h3>
+                <div class="germany-map" id="germanyMap">
+                    <!-- Map points will be added via JavaScript -->
+                    <div class="map-tooltip" id="mapTooltip"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food & Drink -->
+    <section id="food" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Oktoberfest Food & Drink</h2>
+                <p>Traditional Bavarian cuisine and specialties</p>
+            </div>
+            
+            <div class="food-grid">
+                <!-- Oktoberfest Beer -->
+                <div class="food-item">
+                    <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1572119865084-043f79aba1d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="food-content">
+                        <h3>Oktoberfest Beer</h3>
+                        <p>Specially brewed Märzen beer with an alcohol content of 6-7%. Only six Munich breweries are allowed to serve beer at Oktoberfest: Augustiner, Hacker-Pschorr, Hofbräu, Löwenbräu, Paulaner, and Spaten. Served in one-liter mugs called "mass".</p>
+                    </div>
+                </div>
+                
+                <!-- Hendl -->
+                <div class="food-item">
+                    <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1532550907401-d499c7faf67c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="food-content">
+                        <h3>Hendl (Roast Chicken)</h3>
+                        <p>Half a roast chicken, typically seasoned with salt and sometimes herbs. Over 500,000 chickens are consumed each year at Oktoberfest. Crispy skin and juicy meat make this a festival favorite, often served with a pretzel or potato salad.</p>
+                    </div>
+                </div>
+                
+                <!-- Schweinshaxe -->
+                <div class="food-item">
+                    <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1546833996-9f1239000c17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="food-content">
+                        <h3>Schweinshaxe</h3>
+                        <p>Pork knuckle roasted until the skin is crispy and the meat is tender. A Bavarian specialty that's particularly popular at Oktoberfest. Typically served with sauerkraut, dumplings, and mustard. A hearty meal perfect with beer.</p>
+                    </div>
+                </div>
+                
+                <!-- Brezen -->
+                <div class="food-item">
+                    <div class="food-img" style="background-image: url('https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="food-content">
+                        <h3>Brezen (Pretzels)</h3>
+                        <p>Large, soft Bavarian pretzels with a chewy interior and crispy, salted exterior. Often served with Obatzda, a spicy cheese spread, or sweet mustard. The perfect beer accompaniment, with over 130,000 pretzels consumed annually.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Etiquette Guide -->
+    <section id="etiquette">
+        <div class="container">
+            <div class="section-title">
+                <h2>Oktoberfest Etiquette Guide</h2>
+                <p>Do's and Don'ts for the perfect Wiesn experience</p>
+            </div>
+            
+            <div class="etiquette-container">
+                <div class="do-dont do">
+                    <h3>Do's</h3>
+                    <ul>
+                        <li>Make reservations for beer tents well in advance, especially for weekends</li>
+                        <li>Wear traditional Tracht (Dirndl for women, Lederhosen for men) if possible</li>
+                        <li>Make eye contact when toasting (saying "Prost!")</li>
+                        <li>Tip your server (round up or add 5-10%)</li>
+                        <li>Use public transportation to get to the festival grounds</li>
+                        <li>Try traditional Bavarian foods like Hendl and Brezen</li>
+                        <li>Learn a few basic German phrases like "Prost" and "Danke"</li>
+                    </ul>
+                </div>
+                
+                <div class="do-dont dont">
+                    <h3>Don'ts</h3>
+                    <ul>
+                        <li>Forget to bring cash - many vendors don't accept cards</li>
+                        <li>Steal beer mugs - it's illegal and carries heavy fines</li>
+                        <li>Stand on the benches - only step on them when toasting</li>
+                        <li>Assume you'll get a table without a reservation, especially on weekends</li>
+                        <li>Forget to validate your public transportation ticket before boarding</li>
+                        <li>Bring large bags or backpacks - security checks are strict</li>
+                        <li>Overindulge - pace yourself with the strong beer and plenty of food</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3>Essential German Phrases for Oktoberfest</h3>
+                <p style="font-size: 1.1rem;"><strong>Prost!</strong> (Cheers!) • <strong>Ein Maß, bitte.</strong> (One liter of beer, please.) • <strong>O'zapft is!</strong> (It's tapped! - traditional opening phrase) • <strong>Hendl</strong> (Chicken) • <strong>Brezn</strong> (Pretzel) • <strong>Zahlen, bitte.</strong> (Check, please.) • <strong>Wo ist die Toilette?</strong> (Where is the toilet?)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Oktoberfest Gallery</h2>
+                <p>Experience the festival through images</p>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1531816458010-fb7684830f81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1531816458010-fb7684830f81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1572119865084-043f79aba1d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1572119865084-043f79aba1d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1532550907401-d499c7faf67c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1532550907401-d499c7faf67c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1546833996-9f1239000c17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');" data-src="https://images.unsplash.com/photo-1546833996-9f1239000c17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery -->
+    <div class="modal" id="galleryModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <img class="modal-img" id="modalImg" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Oktober<span>fest</span></div>
+            <p>The World's Largest Volksfest - Munich, Germany</p>
+            
+            <div class="tourism-links">
+                <a href="https://www.muenchen.de/int/en.html" class="tourism-link" target="_blank">Official Munich Tourism</a>
+                <a href="https://www.oktoberfest.de/en" class="tourism-link" target="_blank">Official Oktoberfest Website</a>
+                <a href="https://www.germany.travel/en/home.html" class="tourism-link" target="_blank">German National Tourism</a>
+                <a href="https://www.bayern.by/" class="tourism-link" target="_blank">Bavaria Tourism</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#tents">Beer Tents</a>
+                <a href="#history">History</a>
+                <a href="#plan">Plan Your Trip</a>
+                <a href="#food">Food & Drink</a>
+                <a href="#etiquette">Etiquette</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">&copy; 2023 Oktoberfest Guide. All information based on official sources. This is an unofficial fan website.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+        
+        // Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply to cards and other elements
+        document.querySelectorAll('.tent-card, .food-item, .do-dont, .plan-card, .timeline-content').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
+        });
+        
+        // Interactive Map
+        const germanyMap = document.getElementById('germanyMap');
+        const mapTooltip = document.getElementById('mapTooltip');
+        
+        // Oktoberfest locations with approximate coordinates for the map
+        const locations = [
+            { name: 'Oktoberfest Grounds', city: 'Munich', x: '65%', y: '75%', description: 'Theresienwiese - Main Festival Location' },
+            { name: 'Munich Airport', city: 'Munich', x: '70%', y: '70%', description: 'Flughafen München (MUC)' },
+            { name: 'Central Station', city: 'Munich', x: '63%', y: '77%', description: 'Hauptbahnhof - Main Train Station' },
+            { name: 'Marienplatz', city: 'Munich', x: '62%', y: '78%', description: 'City Center & Shopping District' }
+        ];
+        
+        // Create map points
+        locations.forEach(location => {
+            const point = document.createElement('div');
+            point.className = 'map-point';
+            point.style.left = location.x;
+            point.style.top = location.y;
+            point.setAttribute('data-name', location.name);
+            point.setAttribute('data-city', location.city);
+            point.setAttribute('data-description', location.description);
+            
+            point.addEventListener('mouseenter', (e) => {
+                const rect = germanyMap.getBoundingClientRect();
+                mapTooltip.innerHTML = `<strong>${location.name}</strong><br>${location.city}<br><em>${location.description}</em>`;
+                mapTooltip.style.left = e.clientX - rect.left + 15 + 'px';
+                mapTooltip.style.top = e.clientY - rect.top + 15 + 'px';
+                mapTooltip.style.opacity = 1;
+            });
+            
+            point.addEventListener('mouseleave', () => {
+                mapTooltip.style.opacity = 0;
+            });
+            
+            point.addEventListener('click', () => {
+                alert(`Learn more about ${location.name} in Munich!`);
+            });
+            
+            germanyMap.appendChild(point);
+        });
+        
+        // Gallery Modal
+        const galleryModal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.getElementById('closeModal');
+        
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                modalImg.src = item.getAttribute('data-src');
+                galleryModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            galleryModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) {
+                galleryModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Add interactive elements to plan cards
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
